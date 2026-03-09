@@ -17,7 +17,7 @@ st.title("Loan Approval - Two Stage Predictor")
 
 st.sidebar.header("Model Info")
 try:
-    pass
+    st.sidebar.write("classifier excepts ",cls.feature_names_in_)
 except Exception:
     st.sidebar.write("Classifier Features Names not Available")
 
@@ -39,9 +39,26 @@ with cols[1]:
     luxury_assets_value=st.number_input("luxury assets value",value=float(default['luxury_assets_value']))
     bank_asset_value=st.number_input("bank asset value",value=float(default['bank_asset_value']))
 
+applicant={
+    'no_of_dependents' : no_of_dependents,
+    'education' : education,
+    'self_employed' :  self_employed,
+    'income_annum' : income_annum,
+    'loan_amount' : loan_amount,
+    'loan_term' : loan_term, 
+    'cibil_score' :  cibil_score,
+    'residential_assets_value' : residential_assets_value,
+    'commercial_assets_value' : commercial_assets_value, 
+    'luxury_assets_value' : luxury_assets_value, 
+    'bank_asset_value' : bank_asset_value
+}
 
 if st.button("Predict"):
     try:
-        pass
+        expected_col=list(cls.feature_names_in_)
+        applicant_df=build_applicant_form_dict(applicant,expected_col)
+        results=two_stage_predict(cls,reg,applicant_df)
+        res=results[0]
+
     except Exception as e:
         st.error(f"Predection Failed {e}")
