@@ -60,5 +60,10 @@ if st.button("Predict"):
         results=two_stage_predict(cls,reg,applicant_df)
         res=results[0]
 
+        st.write(f"Approved Probability :{res['approved_prob']}")
+        if res['Approved']==1:
+            st.success("✅ Approved")
+            st.write(f"Predicted Loan Amount {res['reg_pred']}")
+
     except Exception as e:
         st.error(f"Predection Failed {e}")
