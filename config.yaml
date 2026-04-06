@@ -1,6 +1,6 @@
 models:
-  classifier: models/stage1_rf_classifier_pipeline.pkl
-  regressor: models/stage2_rf_regression_pipeline.pkl
+  classifier: models/stage_1_rf_classifier_pipeline.pkl
+  regressor: models/stage_2_rf_regression_pipeline.pkl
 
 ui:
   default_inputs:
