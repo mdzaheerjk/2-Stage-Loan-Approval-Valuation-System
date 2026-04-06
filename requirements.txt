@@ -5,4 +5,4 @@ seaborn
 scikit-learn
 joblib
 streamlit
-yaml
+PyYAML
